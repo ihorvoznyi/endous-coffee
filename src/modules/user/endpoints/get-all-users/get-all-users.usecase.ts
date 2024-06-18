@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { RedisService } from 'src/app/infra/redis';
+import { RedisService } from 'src/lib/redis';
 
 type User = {
   id: number;

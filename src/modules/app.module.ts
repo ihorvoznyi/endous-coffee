@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { APP_MODULES } from './modules';
-import { RedisModule } from './infra/redis/redis.module';
+import { RedisModule } from '../lib/redis/redis.module';
+import { UserModule } from './user';
 // import { join } from 'path';
 // import { configLoader } from './core/utils/config-loader';
 
@@ -13,7 +13,7 @@ import { RedisModule } from './infra/redis/redis.module';
       isGlobal: true,
     }),
     RedisModule,
-    ...APP_MODULES,
+    UserModule,
   ],
 })
 export class AppModule {}
