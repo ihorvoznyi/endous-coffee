@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { AirtableService } from 'src/lib/airtable';
 import { RedisService } from 'src/lib/redis';
 
 type User = {
@@ -17,7 +18,12 @@ export class GetAllUsersUseCase {
 
   constructor(
     @Inject(RedisService) private readonly redisService: RedisService,
+    @Inject(AirtableService) private readonly airtableService: AirtableService,
   ) {}
+
+  public async execute() {
+    return await this.airtableService.getRecords('TEAMS');
+  }
 
   public async getAll() {
     const cache = await this.redisService.get(this.cacheKey);

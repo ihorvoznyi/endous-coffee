@@ -9,6 +9,6 @@ export class GetAllUsersEndpoint {
 
   @Get()
   getAll() {
-    return this.handler.getAll();
+    return this.handler.execute();
   }
 }
